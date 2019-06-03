@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientListElement} from '../data-objects/patient-list-element';
+import {DataService} from '../data.service';
+import { Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-all-patients',
@@ -7,16 +9,11 @@ import {PatientListElement} from '../data-objects/patient-list-element';
   styleUrls: ['./all-patients.component.css']
 })
 export class AllPatientsComponent implements OnInit {
-   patients: PatientListElement[] = [
-     new PatientListElement(1, 'alicja', 'make'),
-     new PatientListElement(2, 'alicja', 'marrke'),
-     new PatientListElement(3, 'alicja', 'maked'),
-     new PatientListElement(4, 'alicja', 'mhake'),
-     new PatientListElement(5, 'alicja', 'maske'),
-   ];
-  constructor() { }
+   patients: Array<any>;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getAll().subscribe(patients => this.patients = patients);
   }
 
 }

@@ -1,3 +1,5 @@
+import {Exam} from './exam';
+
 export class Patient {
   public id: number;
   public name: string;

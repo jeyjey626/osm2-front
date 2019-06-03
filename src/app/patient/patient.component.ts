@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Patient} from '../data-objects/patient';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-patient',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-
-  constructor() { }
+  private actionUrl: string;
+  protected patient: Patient;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
