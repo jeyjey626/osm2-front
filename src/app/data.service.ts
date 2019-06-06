@@ -30,4 +30,7 @@ export class DataService {
     public removePatient(href: string) {
     return this.http.delete(href);
     }
+    public getLastExam(patientId: number): Observable<any> {
+    return this.http.get<any>(this.actionUrl + 'lastexam/' + patientId);
+    }
 }

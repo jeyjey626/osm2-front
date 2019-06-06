@@ -5,12 +5,14 @@
       {{name}} {{surname}}
     </h2></mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    Wzrost: {{height}} cm waga:
+  <mat-card-content class="ml-3"><h5>
+    <p>Wzrost: {{height}}cm </p>
+    <p>Waga: {{patientWeight}} {{patientWeight ? 'kg' : 'Brak danych'}}</p></h5>
   </mat-card-content>
   <mat-card>
     <mat-card-header><mat-card-title>Lista Badań:</mat-card-title></mat-card-header>
     <mat-card-content>
+
     <table class="table table-bordered w-75 text-center">
       <thead>
       <tr>

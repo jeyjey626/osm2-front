@@ -19,13 +19,15 @@ export class PatientComponent implements OnInit {
   private actionUrl: string;
   protected patient: any;
   protected examList: any;
+  protected lastExam: any;
   protected sub: Subscription;
   protected chart1: Chart;
   protected chart2: Chart;
   protected name: string;
   protected surname: string;
   protected height: string;
-  protected displayedColumns = ['Data Badania', 'Waga']
+  protected patientWeight: string;
+  protected displayedColumns = ['Data Badania', 'Waga'];
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
   }
@@ -42,6 +44,12 @@ export class PatientComponent implements OnInit {
             this.name = patient.name;
             this.height = patient.height;
             // this.patient.href = patient._links.self.href;
+            this.dataService.getLastExam(id).subscribe((lastExam: any) => {
+              if (lastExam) {
+                this.lastExam = lastExam;
+                this.patientWeight = lastExam.weight;
+              }
+            });
           } else {
             console.log(`Patient with id '${id}' not found, returning to list`);
             this.gotoList();

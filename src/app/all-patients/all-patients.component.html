@@ -1,9 +1,11 @@
-<div class="w-25">
-<div class="row">
 
-</div>
-<hr>
-<div class="list-group">
+<mat-card class="align-items-center">
+  <mat-card-header><mat-card-title><h2>Lista Pacjentów</h2></mat-card-title></mat-card-header>
+  <mat-card-content>
+
+    <a routerLink="/patients/add" class="btn btn-success ml-3" >Nowy pacjent</a>
+  <hr>
+  <div class="list-group">
     <div class="list-group-item list-group-item-action col-xs-12" *ngFor="let patient of patients">
       <div class="text-center">
         <a routerLink="/patients/show/{{patient.id_patient}}" class="list-group-item list-group-item-action">
@@ -11,8 +13,8 @@
         </a>
       </div>
     </div>
-</div>
-  <div class="col-xs-12 text-center align-items-center align-content-center">
-    <a routerLink="/patients/add" class="btn btn-success" >Nowy pacjent</a>
   </div>
-</div>
+  </mat-card-content>
+</mat-card>
+
+
