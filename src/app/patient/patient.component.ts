@@ -18,9 +18,14 @@ import * as moment from 'moment';
 export class PatientComponent implements OnInit {
   private actionUrl: string;
   protected patient: any;
+  protected examList: any;
   protected sub: Subscription;
   protected chart1: Chart;
   protected chart2: Chart;
+  protected name: string;
+  protected surname: string;
+  protected height: string;
+  protected displayedColumns = ['Data Badania', 'Waga']
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
   }
@@ -32,7 +37,11 @@ export class PatientComponent implements OnInit {
         this.dataService.getPatientById(id).subscribe((patient: any) => {
           if (patient) {
             this.patient = patient;
-            this.patient.href = patient._links.self.href;
+            this.examList = patient.examList;
+            this.surname = patient.surname;
+            this.name = patient.name;
+            this.height = patient.height;
+            // this.patient.href = patient._links.self.href;
           } else {
             console.log(`Patient with id '${id}' not found, returning to list`);
             this.gotoList();

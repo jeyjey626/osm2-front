@@ -12,7 +12,7 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import {DataService} from './data.service';
 import {Configuration} from './constant';
 import {FormsModule} from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
