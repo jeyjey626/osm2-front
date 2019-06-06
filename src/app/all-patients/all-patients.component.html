@@ -1,17 +1,18 @@
 <div class="w-25">
 <div class="row">
-  <div class="col-xs-12 text-center align-items-center align-content-center">
-    <button class="btn btn-success">Nowy pacjent</button>
-  </div>
+
 </div>
 <hr>
 <div class="list-group">
     <div class="list-group-item list-group-item-action col-xs-12" *ngFor="let patient of patients">
       <div class="text-center">
-        <a routerLink="/patients/{{patient.id_patient}}" class="list-group-item list-group-item-action">
+        <a routerLink="/patients/show/{{patient.id_patient}}" class="list-group-item list-group-item-action">
           {{patient.name}} {{patient.surname}}
         </a>
       </div>
     </div>
 </div>
+  <div class="col-xs-12 text-center align-items-center align-content-center">
+    <a routerLink="/patients/add" class="btn btn-success" >Nowy pacjent</a>
+  </div>
 </div>

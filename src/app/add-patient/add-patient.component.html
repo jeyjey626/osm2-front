@@ -1,3 +1,30 @@
-<p>
-  add-patient works!
-</p>
+<mat-card>
+  <form #patientForm="ngForm" (ngSubmit)="save(patientForm.value)">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Dodaj Pacjenta</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field>
+        <input matInput placeholder="Imię pacjenta" [(ngModel)]="patientToSend.name"
+        required name="name" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Nazwisko pacjenta" [(ngModel)]="patientToSend.surname"
+        required name="surname" #surname>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Wzrost pacjenta" [(ngModel)]="patientToSend.heightset"
+        required minlength="3" maxlength="3" #heightset name="heightset">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit"
+              [disabled]="!patientForm.form.valid">Zapisz</button>
+      <a mat-button routerLink="/patients">Anuluj</a>
+    </mat-card-actions>
+
+  </form>
+</mat-card>

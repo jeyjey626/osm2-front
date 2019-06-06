@@ -13,9 +13,21 @@ export class DataService {
   constructor(private http: HttpClient, private configuration: Configuration) {
     this.actionUrl = configuration.Server;
   }
-    public getPatientById<Patient>(patientId: number): Observable<Patient> {
-      return this.http.get<Patient>(this.actionUrl + 'patients/' + patientId); }
+    public getPatientById(patientId: number): Observable<any> {
+      return this.http.get<any>(this.actionUrl + 'patients/' + patientId); }
     public getAll<Object>(): Observable<any> {
       return this.http.get(this.actionUrl + 'patients');
+    }
+    public savePatient(patient: any): Observable<any> {
+    let result: Observable<any>;
+    if (patient.href) {
+      result = this.http.put(patient.href, patient);
+    } else {
+      result = this.http.post(this.actionUrl + 'patients', patient);
+    }
+    return result;
+    }
+    public removePatient(href: string) {
+    return this.http.delete(href);
     }
 }

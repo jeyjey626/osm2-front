@@ -1,13 +1,11 @@
 export class PatientToSend {
   public name: string;
   public surname: string;
-  public height: number;
-  public weight: number;
+  public heightset: string;
 
-  public constructor(name: string, surname: string, height: number, weight: number) {
+  public constructor(name: string, surname: string, height: string) {
     this.name = name;
     this.surname = surname;
-    this.height = height;
-    this.weight = weight;
+    this.heightset = height;
   }
 }
