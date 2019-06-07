@@ -9,6 +9,30 @@
     <p>Wzrost: {{height}}cm </p>
     <p>Waga: {{patientWeight}} {{patientWeight ? 'kg' : 'Brak danych'}}</p></h5>
   </mat-card-content>
+
+  <mat-card>
+    <form #examForm="ngForm" (ngSubmit)="save(examForm.value)">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Waga" [(ngModel)]="examToSend.weight"
+               required name="weight" #weight minlength="2">
+      </mat-form-field>
+
+      <app-date-picker placeholder="Data Badania" name="date" required [(ngModel)]="examToSend.date">
+
+      </app-date-picker>
+
+
+
+
+      <mat-card-actions>
+        <button mat-raised-button type="submit"
+                [disabled]="!examForm.form.valid">Dodaj badanie</button>
+      </mat-card-actions>
+    </mat-card-content>
+    </form>
+  </mat-card>
+
   <mat-card>
     <mat-card-header><mat-card-title>Lista Badań:</mat-card-title></mat-card-header>
     <mat-card-content>

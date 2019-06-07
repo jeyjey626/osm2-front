@@ -12,17 +12,29 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import {DataService} from './data.service';
 import {Configuration} from './constant';
 import {FormsModule} from '@angular/forms';
-import { MatButtonModule, MatTableModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatTableModule,
+  MatCardModule,
+  MatInputModule,
+  MatListModule,
+  MatToolbarModule,
+  MatNativeDateModule,
+  MatDatepickerModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 @NgModule({
   declarations: [
     AppComponent,
     AllPatientsComponent,
     PatientComponent,
     HeaderComponent,
-    AddPatientComponent
+    AddPatientComponent,
+    DatePickerComponent
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     MatTableModule,
     HttpClientModule,
@@ -33,7 +45,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule
   ],
   providers: [DataService, Configuration],
   bootstrap: [AppComponent]

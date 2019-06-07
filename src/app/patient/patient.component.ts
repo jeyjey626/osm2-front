@@ -9,6 +9,8 @@ import { Chart } from 'chart.js';
 import {last} from 'rxjs/operators';
 import { } from 'moment';
 import * as moment from 'moment';
+import {NgForm} from '@angular/forms';
+import _date = moment.unitOfTime._date;
 
 @Component({
   selector: 'app-patient',
@@ -20,13 +22,17 @@ export class PatientComponent implements OnInit {
   protected patient: any;
   protected examList: any;
   protected lastExam: any;
+  protected examToSend: any = {};
   protected sub: Subscription;
   protected chart1: Chart;
   protected chart2: Chart;
   protected name: string;
   protected surname: string;
   protected height: string;
+  protected weight: string;
   protected patientWeight: string;
+  protected monthS: string;
+  protected dayS: string;
   protected displayedColumns = ['Data Badania', 'Waga'];
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
@@ -43,6 +49,8 @@ export class PatientComponent implements OnInit {
             this.surname = patient.surname;
             this.name = patient.name;
             this.height = patient.height;
+            this.examToSend.patient_id = id;
+            this.examToSend.height = patient.height;
             // this.patient.href = patient._links.self.href;
             this.dataService.getLastExam(id).subscribe((lastExam: any) => {
               if (lastExam) {
@@ -90,9 +98,17 @@ export class PatientComponent implements OnInit {
       }
     });
   }
+  save(form: NgForm) {
+    console.log(this.examToSend);
+    this.dataService.saveExam(this.examToSend).subscribe(result => {this.ngOnInit();
+    }, error => console.error(error));
+  }
 
   gotoList() {
     this.router.navigate(['/patients']);
+  }
+  refresh() {
+    this.router.navigate(['/patients/show/' + this.examToSend.patient_id]);
   }
 }
 

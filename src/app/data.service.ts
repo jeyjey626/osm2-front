@@ -33,4 +33,13 @@ export class DataService {
     public getLastExam(patientId: number): Observable<any> {
     return this.http.get<any>(this.actionUrl + 'lastexam/' + patientId);
     }
+    public saveExam(exam: any): Observable<any> {
+    let result: Observable<any>
+    if (exam.href) {
+      result = this.http.put(exam.href, exam);
+    } else {
+      result = this.http.post(this.actionUrl + 'lastexam', exam);
+    }
+    return result;
+    }
 }
