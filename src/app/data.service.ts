@@ -31,7 +31,7 @@ export class DataService {
     return this.http.put(this.actionUrl + 'patients/edit/' + id, patient);
   }
     public removePatient(id: number) {
-    return this.http.post(this.actionUrl + 'delete/' + id, id);
+    return this.http.post(this.actionUrl + 'patients/delete/' + id, id);
     }
     public getLastExam(patientId: number): Observable<any> {
     return this.http.get<any>(this.actionUrl + 'lastexam/' + patientId);
