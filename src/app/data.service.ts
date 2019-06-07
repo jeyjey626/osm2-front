@@ -26,9 +26,12 @@ export class DataService {
       result = this.http.post(this.actionUrl + 'patients', patient);
     }
     return result;
-    }
-    public removePatient(href: string) {
-    return this.http.delete(href);
+  }
+  public editPatient(patient: any, id): Observable<any> {
+    return this.http.put(this.actionUrl + 'patients/edit/' + id, patient);
+  }
+    public removePatient(id: number) {
+    return this.http.post(this.actionUrl + 'delete/' + id, id);
     }
     public getLastExam(patientId: number): Observable<any> {
     return this.http.get<any>(this.actionUrl + 'lastexam/' + patientId);

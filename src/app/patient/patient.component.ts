@@ -24,17 +24,18 @@ export class PatientComponent implements OnInit {
   protected lastExam: any;
   protected examToSend: any = {};
   protected sub: Subscription;
-  protected chart1: Chart;
+  protected patientHref: any;
   protected chart2: Chart;
   protected name: string;
   protected surname: string;
   protected height: string;
   protected weight: string;
   protected patientWeight: string;
-  protected  patientBmi: string
+  protected  patientBmi: string;
   protected monthS: string;
   protected dayS: string;
   protected displayedColumns = ['Data Badania', 'Waga'];
+  deleteBtn: any;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
   }
@@ -52,7 +53,6 @@ export class PatientComponent implements OnInit {
             this.height = patient.height;
             this.examToSend.patient_id = id;
             this.examToSend.height = patient.height;
-            // this.patient.href = patient._links.self.href;
             this.dataService.getLastExam(id).subscribe((lastExam: any) => {
               if (lastExam) {
                 this.lastExam = lastExam;
@@ -113,6 +113,11 @@ export class PatientComponent implements OnInit {
   }
   refresh() {
     this.router.navigate(['/patients/show/' + this.examToSend.patient_id]);
+  }
+  remove(id: number) {
+    this.dataService.removePatient(id).subscribe(result => {
+      this.gotoList();
+    }, error => console.error(error));
   }
 }
 
