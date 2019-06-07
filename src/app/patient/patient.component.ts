@@ -101,6 +101,8 @@ export class PatientComponent implements OnInit {
   save(form: NgForm) {
     console.log(this.examToSend);
     this.dataService.saveExam(this.examToSend).subscribe(result => {this.ngOnInit();
+                                                                    this.examToSend.date = '';
+                                                                    this.examToSend.weight = '';
     }, error => console.error(error));
   }
 
