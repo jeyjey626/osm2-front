@@ -31,6 +31,7 @@ export class PatientComponent implements OnInit {
   protected height: string;
   protected weight: string;
   protected patientWeight: string;
+  protected  patientBmi: string
   protected monthS: string;
   protected dayS: string;
   protected displayedColumns = ['Data Badania', 'Waga'];
@@ -56,6 +57,7 @@ export class PatientComponent implements OnInit {
               if (lastExam) {
                 this.lastExam = lastExam;
                 this.patientWeight = lastExam.weight;
+                this.patientBmi = lastExam.bmi;
               }
             });
           } else {

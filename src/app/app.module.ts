@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import {DataService} from './data.service';
 import {Configuration} from './constant';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatTableModule,
@@ -46,7 +46,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     MatListModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule
   ],
   providers: [DataService, Configuration],
   bootstrap: [AppComponent]

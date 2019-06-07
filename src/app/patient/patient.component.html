@@ -1,13 +1,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
 <mat-card >
   <mat-card-header>
-    <mat-card-title><h2>
-      {{name}} {{surname}}
-    </h2></mat-card-title>
+    <mat-card-title><h3>
+      Imię i nazwisko pacjenta: &nbsp;<b>{{name}} {{surname}}</b>
+    </h3></mat-card-title>
   </mat-card-header>
   <mat-card-content class="ml-3"><h5>
-    <p>Wzrost: {{height}}cm </p>
-    <p>Waga: {{patientWeight}} {{patientWeight ? 'kg' : 'Brak danych'}}</p></h5>
+
+    Wzrost: {{height}}cm   &nbsp; &nbsp;   Waga: {{patientWeight}} {{patientWeight ? 'kg' : 'Brak danych'}}
+      &nbsp; &nbsp;BMI: {{patientBmi}} {{patientBmi ? '' : 'Brak Danych'}}</h5>
+
+  <hr>
   </mat-card-content>
 
   <mat-card>
@@ -18,16 +21,15 @@
                required name="weight" #weight minlength="2">
       </mat-form-field>
 
-      <app-date-picker placeholder="Data Badania" name="date" required [(ngModel)]="examToSend.date">
 
+      <app-date-picker placeholder="Data Badania" name="date" required [(ngModel)]="examToSend.date" >
       </app-date-picker>
-
-
-
 
       <mat-card-actions>
         <button mat-raised-button type="submit"
                 [disabled]="!examForm.form.valid">Dodaj badanie</button>
+        <a mat-raised-button routerLink="/patients/edit/{{examToSend.patient_id}}" class="mt-3 mb-1 btn-dark">Edytuj Pacjenta</a>
+        <a mat-button routerLink="/patients" class="mt-3 mb-1" >Powrót do listy</a>
       </mat-card-actions>
     </mat-card-content>
     </form>
